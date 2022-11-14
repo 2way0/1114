@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion menu</title>
+    <style>
+        /* 1110 카페 스타일 1 */
+        .accordion {
+          background-color: #eee;
+          color: #444;
+          cursor: pointer;
+          padding: 18px;
+          width: 100%;
+          border: none;
+          text-align: left;
+          outline: none;
+          font-size: 15px;
+          transition: 0.4s;
+        }
+        
+        .active, .accordion:hover {
+          background-color: #ccc; 
+        }
+        
+        .panel {
+          padding: 0 18px;
+          display: none;
+          background-color: white;
+          overflow: hidden;
+        }
+        </style>
+</head>
+<body>
+    <h1>Accordion</h1>
+
+    <button class="accordion">Section 1</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi pariatur nisi nam saepe dolorem, voluptatem voluptate ipsum quibusdam quisquam non unde possimus laudantium. Nihil voluptas illum, accusamus eaque doloremque alias?</p>
+    </div>
+
+    <button class="accordion">Section 2</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi pariatur nisi nam saepe dolorem, voluptatem voluptate ipsum quibusdam quisquam non unde possimus laudantium. Nihil voluptas illum, accusamus eaque doloremque alias?</p>
+    </div>
+
+    <button class="accordion">Section 3</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi pariatur nisi nam saepe dolorem, voluptatem voluptate ipsum quibusdam quisquam non unde possimus laudantium. Nihil voluptas illum, accusamus eaque doloremque alias?</p>
+    </div>
+    <script>
+        let acc = document.getElementsByClassName("accordion");
+        // 클래스는 배열로 인식하게 되는데 여기선 이름이 똑같고 특정하게 번호를 불러서 가져오지 않아도 되니까  이럴때 ClassName 씀 
+        let i;
+        for (i=0; i<acc.length; i++){
+            // acc.length 는 3 ()개수
+            acc[i].addEventListener("click", function(){
+                // onclick 이 addEventListener("click")와 비슷
+                this.classList.toggle("active");
+                //  this는 바로위에 해답이 있다. 여기서 this는  acc[i]요소를 클릭했을 때를 뜻함
+                //  this 알아보기
+                //  toggle 클래스를 붙이는데 붙였다 떼었다 반응하게 하는 것.
+                let panel = this.nextElementSibling;
+                // this.nextElementSibling 은 클릭한 요소의 형제 요소들이 블락이면 논으로 처리하고~
+                if(panel.style.display == "block"){
+                    panel.style.display ="none";
+                } else{
+                    panel.style.display = "block";
+                }
+            });
+            
+        }
+        
+    </script>
+</body>
+</html>
